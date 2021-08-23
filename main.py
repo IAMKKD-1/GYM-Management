@@ -249,7 +249,7 @@ class superuser:
                             new1 = int(input("Please enter valid membership duration: "))
                         self.members_detail[input5]["Membership Duration"] += new1
                         print(
-                            f'Congrats! Your membership duration is now {self.members_detail[input5]["Membership Duration"]}')
+                            f'Congrats! Your membership duration is now {self.members_detail[input5]["Membership Duration"]} months!')
                         loop_role2 = False
 
                     elif new == '2':
