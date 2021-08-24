@@ -108,47 +108,52 @@ class superuser:
             print("Sorry! User with this contact number exists!")
             break
         else:
-            self.members_detail[contact_no] = {}
+            while not contact_no.isdigit():
+                print("Please enter valid input!")
+                print(" ")
+                contact_no = input("Please enter member's contact number: ")
+            else:
+                self.members_detail[contact_no] = {}
 
-            name = input("Enter full name of member: ")
-            self.members_detail[contact_no]["Full Name"] = name
+                name = input("Enter full name of member: ")
+                self.members_detail[contact_no]["Full Name"] = name
 
-            age = input("Enter Age of the member: ")
-            while not age.isdigit():
-                print("Age has to be a number!")
-                age = input("Please enter valid input: ")
-            self.members_detail[contact_no]["Age"] = age
+                age = input("Enter Age of the member: ")
+                while not age.isdigit():
+                    print("Age has to be a number!")
+                    age = input("Please enter valid input: ")
+                self.members_detail[contact_no]["Age"] = age
 
-            gender = input("Enter Gender of the member: ")
-            while gender not in ['Male', 'MALE', 'male', 'M', 'm', 'Female', 'FEMALE', 'female', 'F', 'f', 'Others',
-                                 'others', 'OTHERS']:
-                print("Valid Gender input - Male[M], Female[F], Others")
-                gender = input("Please enter a valid Gender: ")
-            self.members_detail[contact_no]["Gender"] = gender
+                gender = input("Enter Gender of the member: ")
+                while gender not in ['Male', 'MALE', 'male', 'M', 'm', 'Female', 'FEMALE', 'female', 'F', 'f', 'Others',
+                                     'others', 'OTHERS']:
+                    print("Valid Gender input - Male[M], Female[F], Others")
+                    gender = input("Please enter a valid Gender: ")
+                self.members_detail[contact_no]["Gender"] = gender
 
-            email = input("Enter Email ID of the member: ")
-            self.members_detail[contact_no]["Email"] = email
+                email = input("Enter Email ID of the member: ")
+                self.members_detail[contact_no]["Email"] = email
 
-            while True:
-                try:
-                    bmi = float(input('Enter BMI of the member: '))
-                    while not isinstance(bmi, float):
-                        bmi = float(input("Please enter valid option for BMI: "))
-                    self.members_detail[contact_no]['BMI'] = bmi
-                except:
-                    print("Please enter valid response!")
-                else:
-                    break
+                while True:
+                    try:
+                        bmi = float(input('Enter BMI of the member: '))
+                        while not isinstance(bmi, float):
+                            bmi = float(input("Please enter valid option for BMI: "))
+                        self.members_detail[contact_no]['BMI'] = bmi
+                    except:
+                        print("Please enter valid response!")
+                    else:
+                        break
 
-            duration = int(input("Please enter Membership duration: "))
-            while duration not in [1, 3, 6, 12]:
-                print("Sorry! We only have membership options for 1, 3, 6 and 12 months")
-                duration = int(input("Please enter valid membership duration: "))
-            self.members_detail[contact_no]['Membership Duration'] = duration
+                duration = int(input("Please enter Membership duration: "))
+                while duration not in [1, 3, 6, 12]:
+                    print("Sorry! We only have membership options for 1, 3, 6 and 12 months")
+                    duration = int(input("Please enter valid membership duration: "))
+                self.members_detail[contact_no]['Membership Duration'] = duration
 
-            self.members_detail[contact_no]["Workout Regimen"] = self.regimen_bmi(bmi)
-            print(" ")
-            print("Member Successfully Created!")
+                self.members_detail[contact_no]["Workout Regimen"] = self.regimen_bmi(bmi)
+                print(" ")
+                print("Member Successfully Created!")
         time.sleep(1)
 
     def regimen_bmi(self, bmi):
